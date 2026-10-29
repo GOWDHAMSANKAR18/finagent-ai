@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINAGENT AI | Dark Knight Financial Intelligence Command Center</title>
+    <meta name="description" content="FINAGENT AI - Advanced Dark Knight Multi-Agent Financial Intelligence Platform for cash flow analysis, budget optimization, debt payoff strategies, and goal planning.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css?v=3.0">
+</head>
+<body>
+    <div class="layout-wrapper">
+        <!-- Dark Knight Tactical Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-box">
+                    <div class="brand-icon-3d">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-name">FINAGENT <span class="highlight">AI</span></span>
+                        <span class="brand-tag">Dark Knight Intelligence</span>
+                    </div>
+                </div>
+                <button class="sidebar-toggle" id="sidebar-toggle-btn" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+
+            <div class="user-profile-card">
+                <div class="avatar-3d">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="user-info">
+                    <span class="user-name">Financial Operator</span>
+                    <span class="user-role">Tactical AI Agent Command</span>
+                </div>
+                <div class="system-status-indicator" title="System Status: Tactical Online"></div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#overview" class="nav-item active" onclick="switchNav('overview-view')">
+                    <i class="fa-solid fa-chart-line"></i> <span>Overview</span>
+                </a>
+                <a href="#analysis" class="nav-item" onclick="switchNav('analysis-view')">
+                    <i class="fa-solid fa-sliders"></i> <span>AI Analysis</span>
+                </a>
+                <a href="#simulator" class="nav-item" onclick="switchNav('simulator-view')">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Simulator</span>
+                </a>
+                <a href="#chat" class="nav-item" onclick="switchNav('chat-view')">
+                    <i class="fa-solid fa-comments"></i> <span>AI Advisor</span>
+                </a>
+                <a href="#agents" class="nav-item" onclick="switchNav('agents-view')">
+                    <i class="fa-solid fa-sitemap"></i> <span>Agent Swarm</span>
+                </a>
+                <a href="#goals" class="nav-item" onclick="switchNav('goals-view')">
+                    <i class="fa-solid fa-bullseye"></i> <span>Goals</span>
+                </a>
+                <a href="#debt" class="nav-item" onclick="switchNav('debt-view')">
+                    <i class="fa-solid fa-calculator"></i> <span>Debt Planner</span>
+                </a>
+                <a href="#transactions" class="nav-item" onclick="switchNav('transactions-view')">
+                    <i class="fa-solid fa-receipt"></i> <span>Transactions</span>
+                </a>
+                <a href="#reports" class="nav-item" onclick="switchNav('reports-view')">
+                    <i class="fa-solid fa-file-contract"></i> <span>Reports</span>
+                </a>
+                <a href="#knowledge" class="nav-item" onclick="switchNav('knowledge-view')">
+                    <i class="fa-solid fa-book-open"></i> <span>Knowledge Base</span>
+                </a>
+                <a href="#eval" class="nav-item" onclick="switchNav('eval-view')">
+                    <i class="fa-solid fa-scale-balanced"></i> <span>Evaluation</span>
+                </a>
+                <a href="#settings" class="nav-item" onclick="switchNav('settings-view')">
+                    <i class="fa-solid fa-gear"></i> <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="theme-toggle" onclick="toggleTheme()" id="theme-toggle-btn">
+                    <i class="fa-solid fa-moon moon-icon"></i>
+                    <i class="fa-solid fa-sun sun-icon"></i>
+                    <span id="theme-label">Dark Knight Mode</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header Status Bar -->
+            <header class="top-header">
+                <div class="header-left">
+                    <h1 class="page-title" id="page-title">Financial Intelligence</h1>
+                    <span class="page-subtitle" id="page-subtitle">Dark Knight Multi-Agent Command Center</span>
+                </div>
+
+                <div class="header-right">
+                    <!-- Global Search Bar -->
+                    <div class="header-search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="global-search-input" placeholder="Search financial data or queries..." onkeyup="handleGlobalSearch(event)">
+                    </div>
+
+                    <!-- Live System Status Badge -->
+                    <div class="ai-status-badge" id="ai-status-badge">
+                        <span class="status-pulse-dot"></span>
+                        <span id="ai-status-text">SYSTEM ONLINE</span>
+                    </div>
+
+                    <!-- Preset Selector -->
+                    <div class="preset-dropdown">
+                        <button class="btn-preset" id="preset-btn">
+                            <i class="fa-solid fa-layer-group"></i> <span>Presets</span> <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="loadPreset('master')"><i class="fa-solid fa-star red-text"></i> Master Profile (₹60k + Laptop + Loan)</a>
+                            <a href="#" onclick="loadPreset('high_expenses')"><i class="fa-solid fa-arrow-trend-up red-text"></i> High Expenses (Tight Surplus)</a>
+                            <a href="#" onclick="loadPreset('debt_heavy')"><i class="fa-solid fa-credit-card red-text"></i> Debt Heavy (High DTI > 40%)</a>
+                            <a href="#" onclick="loadPreset('multiple_goals')"><i class="fa-solid fa-bullseye green-text"></i> Multiple Goals (4 Priorities)</a>
+                            <a href="#" onclick="loadPreset('impossible_goal')"><i class="fa-solid fa-triangle-exclamation amber-text"></i> Impossible Goal Challenge</a>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary-red" onclick="runPipeline()">
+                        <i class="fa-solid fa-bolt"></i> <span>Run Multi-Agent Swarm</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- ========================================== -->
+            <!-- VIEW 1: OVERVIEW COMMAND CENTER -->
+            <!-- ========================================== -->
+            <section id="overview-view" class="view-panel active">
+                <!-- Hero Section: Financial Health Ring & Synthesis Card -->
+                <div class="hero-command-card card-3d red-glow-bg">
+                    <div class="hero-left">
+                        <div class="health-ring-wrapper">
+                            <svg class="ring-svg" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
+                                <circle class="ring-progress" id="hero-ring-progress" cx="60" cy="60" r="50" stroke-dasharray="314.15" stroke-dashoffset="56.5"></circle>
+                            </svg>
+                            <div class="ring-center">
+                                <span class="ring-score-number" id="hero-health-score">82</span>
+                                <span class="ring-score-label">HEALTH</span>
+                            </div>
+                        </div>
+                        <div class="hero-health-meta">
+                            <div class="hero-badge-row">
+                                <span class="badge-status-green" id="hero-health-rating">EXCELLENT</span>
+                                <span class="hero-trend-pill green"><i class="fa-solid fa-arrow-trend-up"></i> +7.4% this month</span>
+                            </div>
+                            <h2>YOUR FINANCIAL HEALTH</h2>
+                            <p id="hero-health-desc">Your financial position is strong. Multi-Agent AI identified 4 optimization opportunities to accelerate savings and optimize debt repayment.</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-right-actions">
+                        <div class="agent-mini-pills">
+                            <span class="mini-agent-chip"><i class="fa-solid fa-calculator red-text"></i> Financial Analyst</span>
+                            <span class="mini-agent-chip"><i class="fa-solid fa-chart-pie green-text"></i> Budget Agent</span>
+                            <span class="mini-agent-chip"><i class="fa-solid fa-shield-halved red-text"></i> Debt Agent</span>
+                            <span class="mini-agent-chip"><i class="fa-solid fa-compass red-text"></i> Planning Agent</span>
+                        </div>
+                        <button class="btn-secondary-glow" onclick="switchNav('analysis-view')">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit Profile Inputs
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4 Financial Summary KPI Cards -->
+                <div class="kpi-grid margin-top">
+                    <!-- Income Card (Red Glow) -->
+                    <div class="kpi-card-3d red-glow">
+                        <div class="kpi-header">
+                            <span class="kpi-title">Monthly Income</span>
+                            <div class="kpi-icon-box red"><i class="fa-solid fa-wallet"></i></div>
+                        </div>
+                        <div class="kpi-value" id="kpi-income">₹60,000</div>
+                        <div class="kpi-subtext green-text"><i class="fa-solid fa-arrow-trend-up"></i> +5.2% cash inflow</div>
+                    </div>
+
+                    <!-- Expenses Card -->
+                    <div class="kpi-card-3d neutral-glow">
+                        <div class="kpi-header">
+                            <span class="kpi-title">Monthly Expenses</span>
+                            <div class="kpi-icon-box amber"><i class="fa-solid fa-receipt"></i></div>
+                        </div>
+                        <div class="kpi-value" id="kpi-expenses">₹37,000</div>
+                        <div class="kpi-subtext muted-text" id="kpi-expenses-breakdown">Fixed: ₹22k • Variable: ₹15k</div>
+                    </div>
+
+                    <!-- Savings Card -->
+                    <div class="kpi-card-3d green-glow">
+                        <div class="kpi-header">
+                            <span class="kpi-title">Monthly Savings</span>
+                            <div class="kpi-icon-box green"><i class="fa-solid fa-piggy-bank"></i></div>
+                        </div>
+                        <div class="kpi-value green-text" id="kpi-savings">₹23,000</div>
+                        <div class="kpi-subtext green-text" id="kpi-savings-rate">38.3% Savings Rate</div>
+                    </div>
+
+                    <!-- Debt Card -->
+                    <div class="kpi-card-3d red-glow">
+                        <div class="kpi-header">
+                            <span class="kpi-title">Outstanding Debt</span>
+                            <div class="kpi-icon-box red"><i class="fa-solid fa-credit-card"></i></div>
+                        </div>
+                        <div class="kpi-value red-text" id="kpi-debt">₹240,000</div>
+                        <div class="kpi-subtext red-text" id="kpi-dti-ratio">DTI Ratio: 11.7% (Healthy)</div>
+                    </div>
+                </div>
+
+                <!-- Cash Flow Visualization & AI Insights Panel -->
+                <div class="grid-2col margin-top">
+                    <!-- Cash Flow Chart Card -->
+                    <div class="card-3d">
+                        <div class="card-header-bar">
+                            <h3><i class="fa-solid fa-chart-area red-text"></i> Cash Flow Trajectory & Projection</h3>
+                            <div class="chart-toggles">
+                                <span class="chart-badge">6 Month Trajectory</span>
+                            </div>
+                        </div>
+                        <div class="chart-container-lg">
+                            <canvas id="cashflow-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- AI Insights Panel -->
+                    <div class="card-3d">
+                        <div class="card-header-bar">
+                            <h3><i class="fa-solid fa-wand-magic-sparkles red-text"></i> AI FINANCIAL INSIGHTS</h3>
+                            <span class="badge-pill-red">Synthesized</span>
+                        </div>
+                        <div id="ai-insights-list" class="insights-container">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Multi-Agent Pipeline Status Section -->
+                <div class="card-3d margin-top">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-sitemap red-text"></i> Multi-Agent Swarm Pipeline</h3>
+                        <span class="badge-pill-green">Active Pipeline</span>
+                    </div>
+                    <div class="pipeline-quick-view" id="quick-pipeline-bar">
+                        <div class="pipeline-step-node active" id="qnode-orchestrator">
+                            <i class="fa-solid fa-brain"></i> <span>Orchestrator</span>
+                        </div>
+                        <div class="pipeline-connector"></div>
+                        <div class="pipeline-step-node" id="qnode-budget">
+                            <i class="fa-solid fa-calculator"></i> <span>Budget Agent</span>
+                        </div>
+                        <div class="pipeline-connector"></div>
+                        <div class="pipeline-step-node" id="qnode-goal">
+                            <i class="fa-solid fa-bullseye"></i> <span>Goal Agent</span>
+                        </div>
+                        <div class="pipeline-connector"></div>
+                        <div class="pipeline-step-node" id="qnode-debt">
+                            <i class="fa-solid fa-shield-halved"></i> <span>Debt Agent</span>
+                        </div>
+                        <div class="pipeline-connector"></div>
+                        <div class="pipeline-step-node" id="qnode-research">
+                            <i class="fa-solid fa-book-open"></i> <span>Research Agent</span>
+                        </div>
+                        <div class="pipeline-connector"></div>
+                        <div class="pipeline-step-node" id="qnode-recommendation">
+                            <i class="fa-solid fa-compass"></i> <span>Recommendation Agent</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 2: AI ANALYSIS & INPUTS -->
+            <!-- ========================================== -->
+            <section id="analysis-view" class="view-panel">
+                <div class="grid-2col">
+                    <!-- Profile Form Card -->
+                    <div class="card-3d">
+                        <div class="card-header-bar">
+                            <h3><i class="fa-solid fa-sliders red-text"></i> Financial Profile Setup</h3>
+                            <button type="button" class="btn-xs-outline" onclick="resetDemoData()"><i class="fa-solid fa-rotate-left"></i> Reset Defaults</button>
+                        </div>
+
+                        <form id="profile-form" onsubmit="event.preventDefault(); runPipeline();">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="monthly_income">Monthly Income (₹)</label>
+                                    <input type="number" id="monthly_income" value="60000" min="0" step="1000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fixed_expenses">Fixed Needs (₹)</label>
+                                    <input type="number" id="fixed_expenses" value="22000" min="0" step="500" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="variable_expenses">Variable Wants (₹)</label>
+                                    <input type="number" id="variable_expenses" value="15000" min="0" step="500" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="existing_savings">Existing Savings (₹)</label>
+                                    <input type="number" id="existing_savings" value="50000" min="0" step="1000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emergency_fund">Emergency Fund (₹)</label>
+                                    <input type="number" id="emergency_fund" value="30000" min="0" step="1000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="risk_tolerance">Risk Tolerance</label>
+                                    <select id="risk_tolerance">
+                                        <option value="conservative">Conservative</option>
+                                        <option value="moderate" selected>Moderate</option>
+                                        <option value="aggressive">Aggressive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-section-header margin-top-sm">
+                                <h4><i class="fa-solid fa-bullseye green-text"></i> Financial Goals</h4>
+                                <button type="button" class="btn-xs-red" onclick="addGoalRow()"><i class="fa-solid fa-plus"></i> Add Goal</button>
+                            </div>
+                            <div id="goals-container" class="dynamic-rows-box"></div>
+
+                            <div class="form-section-header margin-top-sm">
+                                <h4><i class="fa-solid fa-hand-holding-dollar red-text"></i> Outstanding Debts</h4>
+                                <button type="button" class="btn-xs-red" onclick="addDebtRow()"><i class="fa-solid fa-plus"></i> Add Debt</button>
+                            </div>
+                            <div id="debts-container" class="dynamic-rows-box"></div>
+
+                            <button type="submit" class="btn-primary-red width-100 margin-top">
+                                <i class="fa-solid fa-bolt"></i> Re-Analyze Financial Profile
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Recommended Allocation Breakdown -->
+                    <div class="card-3d">
+                        <div class="card-header-bar">
+                            <h3><i class="fa-solid fa-chart-pie red-text"></i> Recommended Allocation (50/30/20)</h3>
+                        </div>
+                        <div class="chart-container-lg">
+                            <canvas id="budget-pie-chart"></canvas>
+                        </div>
+                        <div id="allocation-legend-list" class="alloc-legend-list margin-top-sm"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 3: WHAT-IF SIMULATOR -->
+            <!-- ========================================== -->
+            <section id="simulator-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-wand-magic-sparkles red-text"></i> WHAT-IF FINANCIAL SIMULATOR</h3>
+                        <span class="muted-text">Test financial modifications without altering active profile</span>
+                    </div>
+
+                    <div class="sim-grid margin-top">
+                        <div class="sim-control-card">
+                            <label>Income Delta: <strong id="sim-income-val" class="green-text">+₹0</strong></label>
+                            <input type="range" id="sim-income-range" min="-20000" max="40000" step="1000" value="0" oninput="runScenarioSimulation()">
+                        </div>
+
+                        <div class="sim-control-card">
+                            <label>Expense Reduction: <strong id="sim-expenses-val" class="red-text">-₹2,000</strong></label>
+                            <input type="range" id="sim-expenses-range" min="-15000" max="15000" step="1000" value="-2000" oninput="runScenarioSimulation()">
+                        </div>
+
+                        <div class="sim-control-card">
+                            <label>Extra Savings Allocation: <strong id="sim-savings-val" class="green-text">+₹5,000</strong></label>
+                            <input type="range" id="sim-savings-range" min="0" max="30000" step="1000" value="5000" oninput="runScenarioSimulation()">
+                        </div>
+                    </div>
+
+                    <div id="simulation-output-box" class="sim-results-wrapper margin-top">
+                        <!-- Populated by simulation JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 4: AI ADVISOR CHAT -->
+            <!-- ========================================== -->
+            <section id="chat-view" class="view-panel">
+                <div class="card-3d chat-full-container">
+                    <div class="card-header-bar">
+                        <div class="chat-header-info">
+                            <h3><i class="fa-solid fa-comments red-text"></i> FINAGENT AI ADVISOR</h3>
+                            <span class="muted-text">Ask your multi-agent financial intelligence team</span>
+                        </div>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <button class="btn-xs-outline" onclick="clearChatHistory()"><i class="fa-solid fa-trash-can"></i> Clear History</button>
+                            <span class="badge-pill-green"><i class="fa-solid fa-circle"></i> 5 Agents Connected</span>
+                        </div>
+                    </div>
+
+                    <div class="chat-prompts-bar">
+                        <button class="chip-prompt" onclick="sendChatQuery('How can I save more this month?')">How can I save more this month?</button>
+                        <button class="chip-prompt" onclick="sendChatQuery('Analyze my spending.')">Analyze my spending</button>
+                        <button class="chip-prompt" onclick="sendChatQuery('How should I prioritize my debt?')">How should I prioritize my debt?</button>
+                        <button class="chip-prompt" onclick="sendChatQuery('Can I afford my laptop goal?')">Can I afford my laptop goal?</button>
+                        <button class="chip-prompt" onclick="sendChatQuery('What is my overall financial health score?')">Health score breakdown</button>
+                    </div>
+
+                    <div id="chat-messages-full" class="chat-messages-box">
+                        <div class="chat-bubble system">
+                            <div class="bubble-header"><i class="fa-solid fa-shield-halved red-text"></i> FinAgent AI Orchestrator</div>
+                            <p>Welcome to FinAgent AI Advisor! Ask any question about your budget, goal feasibility, debt payoff, or cash flow. Answers are generated by multi-agent consensus.</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-bar">
+                        <input type="text" id="chat-input-field" placeholder="Ask your financial intelligence team..." onkeypress="if(event.key==='Enter') sendChatQuery()">
+                        <button class="btn-primary-red" onclick="sendChatQuery()"><i class="fa-solid fa-paper-plane"></i> Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 5: MULTI-AGENT COMMAND CENTER -->
+            <!-- ========================================== -->
+            <section id="agents-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-sitemap red-text"></i> MULTI-AGENT COMMAND CENTER</h3>
+                        <span class="badge-pill-red">Agent Swarm Architecture</span>
+                    </div>
+
+                    <!-- Interactive Diagram -->
+                    <div class="agent-topology-diagram margin-top">
+                        <div class="topology-user-node">
+                            <i class="fa-solid fa-user-shield"></i> USER REQUEST
+                        </div>
+                        <div class="topology-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="topology-orchestrator-node">
+                            <i class="fa-solid fa-brain"></i> ORCHESTRATOR AGENT
+                        </div>
+                        <div class="topology-branches">
+                            <div class="agent-branch-card" id="card-agent-budget">
+                                <div class="agent-card-header">
+                                    <div class="agent-icon red"><i class="fa-solid fa-calculator"></i></div>
+                                    <div>
+                                        <h4>Budget / Financial Analyst Agent</h4>
+                                        <span class="agent-status-pill idle" id="status-budget">IDLE</span>
+                                    </div>
+                                </div>
+                                <p class="agent-role-desc">Analyzes income, expense categories, monthly surplus, savings rate, and spending anomalies.</p>
+                                <div class="agent-meta-foot">Role: Cash Flow & Budget Analysis • Status: Ready</div>
+                            </div>
+
+                            <div class="agent-branch-card" id="card-agent-goal">
+                                <div class="agent-card-header">
+                                    <div class="agent-icon green"><i class="fa-solid fa-bullseye"></i></div>
+                                    <div>
+                                        <h4>Goal & Financial Planning Agent</h4>
+                                        <span class="agent-status-pill idle" id="status-goal">IDLE</span>
+                                    </div>
+                                </div>
+                                <p class="agent-role-desc">Evaluates short and long-term financial goals, required monthly savings, and timeline feasibility.</p>
+                                <div class="agent-meta-foot">Role: Goal Feasibility & Milestone Allocations • Status: Ready</div>
+                            </div>
+
+                            <div class="agent-branch-card" id="card-agent-debt">
+                                <div class="agent-card-header">
+                                    <div class="agent-icon red"><i class="fa-solid fa-shield-halved"></i></div>
+                                    <div>
+                                        <h4>Debt & Risk Analysis Agent</h4>
+                                        <span class="agent-status-pill idle" id="status-debt">IDLE</span>
+                                    </div>
+                                </div>
+                                <p class="agent-role-desc">Evaluates debt burden, DTI ratios, interest compounding risks, and emergency safety nets.</p>
+                                <div class="agent-meta-foot">Role: Risk Flags & Payoff Planning • Status: Ready</div>
+                            </div>
+
+                            <div class="agent-branch-card" id="card-agent-research">
+                                <div class="agent-card-header">
+                                    <div class="agent-icon amber"><i class="fa-solid fa-book-open"></i></div>
+                                    <div>
+                                        <h4>Financial Research & Knowledge Agent</h4>
+                                        <span class="agent-status-pill idle" id="status-research">IDLE</span>
+                                    </div>
+                                </div>
+                                <p class="agent-role-desc">Queries local Knowledge Base via RAG to retrieve educational benchmarks and citations.</p>
+                                <div class="agent-meta-foot">Role: RAG Knowledge Retrieval & Benchmarks • Status: Ready</div>
+                            </div>
+
+                            <div class="agent-branch-card" id="card-agent-recommendation">
+                                <div class="agent-card-header">
+                                    <div class="agent-icon red"><i class="fa-solid fa-compass"></i></div>
+                                    <div>
+                                        <h4>Financial Decision / Recommendation Agent</h4>
+                                        <span class="agent-status-pill idle" id="status-recommendation">IDLE</span>
+                                    </div>
+                                </div>
+                                <p class="agent-role-desc">Synthesizes multi-agent outputs, validates mathematical constraints, and builds the final plan.</p>
+                                <div class="agent-meta-foot">Role: Reconciliation & Synthesis • Status: Ready</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Agent Execution Log Feed -->
+                    <div class="margin-top">
+                        <h3><i class="fa-solid fa-terminal red-text"></i> Live Agent Message Bus & Execution Stream</h3>
+                        <div id="agent-activity-log" class="terminal-log-box margin-top-sm">
+                            <div class="log-entry system">[SYSTEM] Dark Knight Multi-Agent system initialized and ready.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 6: GOALS & MILESTONES -->
+            <!-- ========================================== -->
+            <section id="goals-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-bullseye green-text"></i> GOAL FEASIBILITY & MILESTONE ROADMAP</h3>
+                    </div>
+
+                    <div id="goals-feasibility-grid" class="goals-cards-grid margin-top">
+                        <!-- Dynamic goal cards -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 7: DEBT PLANNER -->
+            <!-- ========================================== -->
+            <section id="debt-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-calculator red-text"></i> DEBT PAYOFF STRATEGY COMPARISON</h3>
+                    </div>
+
+                    <div class="debt-strategy-grid margin-top" id="debt-strategies-container">
+                        <!-- Strategy cards populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 8: TRANSACTIONS & CSV UPLOAD -->
+            <!-- ========================================== -->
+            <section id="transactions-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-receipt red-text"></i> TRANSACTIONS & CSV ANALYZER</h3>
+                    </div>
+
+                    <!-- Drag & Drop CSV Dropzone -->
+                    <div class="csv-dropzone margin-top" id="csv-dropzone" onclick="document.getElementById('csv-file-input').click()">
+                        <i class="fa-solid fa-cloud-arrow-up dropzone-icon red-text"></i>
+                        <h3>DROP YOUR FINANCIAL CSV HERE</h3>
+                        <p>Drag & drop your bank statement CSV file here or <span class="highlight-red">Browse Files</span></p>
+                        <input type="file" id="csv-file-input" accept=".csv" style="display:none" onchange="handleFileUpload(event)">
+                    </div>
+
+                    <div id="csv-upload-status" class="csv-status-banner margin-top-sm" style="display:none"></div>
+
+                    <!-- Table of transactions -->
+                    <div class="table-responsive margin-top">
+                        <table class="fin-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Amount (₹)</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactions-table-body">
+                                <tr><td colspan="5" class="empty-cell">No CSV uploaded yet. Upload a CSV or run the analysis.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 9: REPORTS -->
+            <!-- ========================================== -->
+            <section id="reports-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-file-contract green-text"></i> FINANCIAL REPORT GENERATOR</h3>
+                        <div class="report-actions">
+                            <button class="btn-primary-red" onclick="generateAndDownloadReport()"><i class="fa-solid fa-download"></i> Download Report</button>
+                        </div>
+                    </div>
+
+                    <div class="report-preview-container margin-top">
+                        <pre id="report-output-pre">Click 'Run Multi-Agent Swarm' to generate your detailed financial report.</pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 10: KNOWLEDGE BASE -->
+            <!-- ========================================== -->
+            <section id="knowledge-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-book-open green-text"></i> FINANCIAL KNOWLEDGE BASE (RAG)</h3>
+                    </div>
+
+                    <div class="kb-search-bar margin-top">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="kb-search-input" placeholder="Search rules (e.g. 50/30/20, DTI ratio, Emergency Fund, Debt Avalanche)..." onkeyup="searchKB()">
+                        <button class="btn-primary-red" onclick="searchKB()">Search</button>
+                    </div>
+
+                    <div id="kb-results-grid" class="kb-cards-grid margin-top">
+                        <!-- Populated by searchKB -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 11: EVALUATION -->
+            <!-- ========================================== -->
+            <section id="eval-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-scale-balanced red-text"></i> SYSTEM BENCHMARK EVALUATION</h3>
+                        <button class="btn-primary-red" onclick="runSystemEvaluation()"><i class="fa-solid fa-play"></i> Run Benchmark Suite</button>
+                    </div>
+
+                    <div class="table-responsive margin-top">
+                        <table class="fin-table">
+                            <thead>
+                                <tr>
+                                    <th>Evaluation Metric</th>
+                                    <th>Single-Agent Baseline</th>
+                                    <th>Multi-Agent FinAgent AI</th>
+                                    <th>Margin</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eval-table-body">
+                                <tr><td colspan="4" class="empty-cell">Click 'Run Benchmark Suite' to execute single vs multi-agent comparative analysis.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="chart-container-lg margin-top">
+                        <canvas id="eval-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VIEW 12: SETTINGS -->
+            <!-- ========================================== -->
+            <section id="settings-view" class="view-panel">
+                <div class="card-3d">
+                    <div class="card-header-bar">
+                        <h3><i class="fa-solid fa-gear red-text"></i> SYSTEM CONFIGURATION & SETTINGS</h3>
+                    </div>
+
+                    <div class="settings-grid margin-top">
+                        <div class="settings-card">
+                            <h4>Platform Details</h4>
+                            <p><strong>Service:</strong> FinAgent AI</p>
+                            <p><strong>Version:</strong> 2.0.0 (Dark Knight Edition)</p>
+                            <p><strong>Engine:</strong> Multi-Agent Swarm Orchestrator</p>
+                            <p><strong>Free AI Provider:</strong> Groq Free Developer Tier (llama-3.3-70b-versatile)</p>
+                            <p><strong>Data Privacy:</strong> Server-Side API Key Protection</p>
+                        </div>
+
+                        <div class="settings-card">
+                            <h4>API Health & Connectivity Test</h4>
+                            <div id="settings-health-info" class="margin-top-sm">
+                                <span class="badge-pill-green">System Healthy</span>
+                            </div>
+                            <div class="margin-top">
+                                <button class="btn-primary-red" onclick="testAPIConnectivity()">
+                                    <i class="fa-solid fa-plug-circle-check"></i> Test Live LLM Connectivity
+                                </button>
+                            </div>
+                            <div id="connectivity-result-box" class="margin-top-sm info-box hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/static/app.js?v=3.0"></script>
+</body>
+</html>

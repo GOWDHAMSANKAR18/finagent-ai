@@ -1,0 +1,16 @@
+date,description,category,amount,type
+2026-09-01,Monthly Salary,Income,60000.00,income
+2026-09-02,Apartment Rent,Housing,15000.00,expense
+2026-09-03,Grocery Supermarket,Food & Groceries,3500.00,expense
+2026-09-04,Electricity & Utilities,Utilities,2200.00,expense
+2026-09-05,Netflix & Spotify Subscription,Subscriptions,1200.00,expense
+2026-09-06,Restaurant Dining Out,Dining & Entertainment,2800.00,expense
+2026-09-08,Uber Rides,Transportation,1800.00,expense
+2026-09-10,Personal Loan EMI,Debt Payment,7000.00,expense
+2026-09-12,Pharmacy & Medicine,Healthcare,1500.00,expense
+2026-09-15,Weekend Shopping,Shopping & Clothes,3200.00,expense
+2026-09-18,Coffee Shop & Snacks,Dining & Entertainment,1400.00,expense
+2026-09-20,Mobile & Internet Bill,Utilities,999.00,expense
+2026-09-22,Gym Membership,Subscriptions,800.00,expense
+2026-09-25,Fuel / Metro Card,Transportation,1200.00,expense
+2026-09-27,Miscellaneous Supplies,Other,1401.00,expense

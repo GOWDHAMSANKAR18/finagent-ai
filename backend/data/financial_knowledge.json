@@ -1,0 +1,66 @@
+[
+  {
+    "id": "kb_50_30_20",
+    "topic": "50/30/20 Budgeting Rule",
+    "category": "Budgeting",
+    "summary": "The 50/30/20 rule divides net monthly income into three categories: 50% for Needs (Housing, Utilities, Groceries, Minimum Debt Payments), 30% for Wants (Dining out, Subscriptions, Shopping), and 20% for Savings & Debt Snowball/Avalanche.",
+    "keywords": ["50/30/20", "budget rule", "needs", "wants", "savings percentage"],
+    "formula_or_rule": "Needs <= 50% Income; Wants <= 30% Income; Savings/Debt >= 20% Income."
+  },
+  {
+    "id": "kb_emergency_fund",
+    "topic": "Emergency Fund Adequacy Threshold",
+    "category": "Risk Management",
+    "summary": "An emergency fund should cover between 3 to 6 months of essential living expenses (Housing, Food, Utilities, Healthcare, Debt EMIs). For single-income households or variable income, 6 to 9 months is recommended. It must be kept in highly liquid, low-risk accounts like liquid mutual funds or high-yield savings accounts.",
+    "keywords": ["emergency fund", "liquid savings", "safety net", "contingency", "months expenses"],
+    "formula_or_rule": "Target Emergency Fund = Monthly Essential Expenses * (3 to 6 months)."
+  },
+  {
+    "id": "kb_debt_to_income",
+    "topic": "Debt-to-Income (DTI) Ratio Standards",
+    "category": "Debt Management",
+    "summary": "DTI measures the percentage of monthly gross income that goes toward paying debts. A DTI below 20% is considered healthy; 20% to 35% is manageable; 36% to 49% indicates high debt risk; 50% or above signifies critical financial distress where debt restructuring or emergency intervention is needed.",
+    "keywords": ["DTI", "debt to income", "leverage", "borrowing limit", "debt risk"],
+    "formula_or_rule": "DTI Ratio = (Total Monthly Debt Obligations / Monthly Gross Income) * 100."
+  },
+  {
+    "id": "kb_debt_avalanche_vs_snowball",
+    "topic": "Debt Repayment Strategies: Avalanche vs Snowball",
+    "category": "Debt Management",
+    "summary": "The Debt Avalanche method pays off debts in order of highest interest rate first, minimizing overall interest paid mathematically. The Debt Snowball method pays off smallest balance debts first regardless of interest rate, creating quick psychological wins. Mathematically, Avalanche is superior; behaviorally, Snowball builds momentum.",
+    "keywords": ["debt avalanche", "debt snowball", "interest rate", "payoff method", "high-cost debt"],
+    "formula_or_rule": "Avalanche: Rank by Interest Rate DESC. Snowball: Rank by Balance ASC."
+  },
+  {
+    "id": "kb_goal_feasibility_gap",
+    "topic": "Goal Feasibility & Monthly Savings Allocation Gap",
+    "category": "Financial Planning",
+    "summary": "Goal Feasibility compares the required monthly savings to achieve a financial goal by its target deadline against the user's available monthly cash surplus. If Required Monthly Allocation > Available Surplus, the goal has a Feasibility Gap. Mitigations include extending deadline, reducing target amount, cutting variable expenses, or reprioritizing goals.",
+    "keywords": ["goal feasibility", "required monthly savings", "deadline gap", "target shortfall"],
+    "formula_or_rule": "Required Monthly Savings = (Target Goal Amount - Current Dedicated Savings) / Target Months."
+  },
+  {
+    "id": "kb_inflation_impact",
+    "topic": "Inflation Impact on Long-Term Goals",
+    "category": "Economics & Planning",
+    "summary": "Inflation erodes the purchasing power of money over time. For long-term goals exceeding 3 years (like education or home down payment), inflation must be factored into future cost calculations using compounding inflation rates (typically 5-7% annually in developing economies).",
+    "keywords": ["inflation", "purchasing power", "future cost", "compounding", "real rate of return"],
+    "formula_or_rule": "Future Value = Present Value * (1 + Inflation Rate)^Years."
+  },
+  {
+    "id": "kb_savings_rate",
+    "topic": "Monthly Savings Rate Benchmark",
+    "category": "Financial Health",
+    "summary": "Savings Rate measures the percentage of monthly income saved after all expenses. A healthy benchmark is 20% or higher. A savings rate below 10% leaves little room for wealth building, while a negative savings rate indicates living on debt or liquidating assets.",
+    "keywords": ["savings rate", "monthly surplus", "cash flow ratio", "financial health"],
+    "formula_or_rule": "Savings Rate = (Monthly Surplus / Monthly Income) * 100."
+  },
+  {
+    "id": "kb_high_interest_debt_warning",
+    "topic": "High-Interest Debt Alert Threshold",
+    "category": "Risk Management",
+    "summary": "Debts carrying interest rates above 12-15% per annum (such as credit card rollovers, payday loans, or unsecured personal loans) are destructive to long-term wealth accumulation. Repaying high-interest debt provides a guaranteed return equal to the interest rate avoided.",
+    "keywords": ["high interest debt", "credit card debt", "personal loan", "toxic debt", "guaranteed return"],
+    "formula_or_rule": "Priority Order: High-Interest Debt Repayment > Market Investments."
+  }
+]

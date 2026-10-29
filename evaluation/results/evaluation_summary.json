@@ -1,0 +1,227 @@
+{
+  "evaluation_summary": {
+    "total_test_cases": 8,
+    "single_agent_baseline": {
+      "average_accuracy_pct": 84.53,
+      "average_latency_seconds": 0.2886,
+      "average_llm_calls": 1.0,
+      "average_tool_calls": 0.0
+    },
+    "multi_agent_system": {
+      "average_accuracy_pct": 99.06,
+      "average_latency_seconds": 0.0714,
+      "average_llm_calls": 5.8,
+      "average_tool_calls": 14.0,
+      "total_delegation_loops_triggered": 3
+    },
+    "ablation_without_validation": {
+      "average_accuracy_pct": 94.38,
+      "average_latency_seconds": 0.0018,
+      "average_llm_calls": 5.0,
+      "average_tool_calls": 11.6,
+      "mathematically_balanced_cases_pct": 87.5
+    }
+  },
+  "detailed_test_cases": [
+    {
+      "case_id": "case_01",
+      "case_name": "Standard Surplus & Goal",
+      "single_agent": {
+        "overall_accuracy": 0.85,
+        "response_time_seconds": 2.3064,
+        "llm_calls": 1,
+        "tool_calls": 0
+      },
+      "multi_agent": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.5531,
+        "llm_calls": 5,
+        "tool_calls": 12,
+        "delegations_triggered": 0,
+        "is_mathematically_balanced": true
+      },
+      "ablation_without_validation": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0011,
+        "llm_calls": 5,
+        "tool_calls": 12,
+        "is_mathematically_balanced": true
+      }
+    },
+    {
+      "case_id": "case_02",
+      "case_name": "Budget Deficit Scenario",
+      "single_agent": {
+        "overall_accuracy": 0.8125,
+        "response_time_seconds": 0.0002,
+        "llm_calls": 1,
+        "tool_calls": 0
+      },
+      "multi_agent": {
+        "overall_accuracy": 0.9625,
+        "response_time_seconds": 0.0015,
+        "llm_calls": 7,
+        "tool_calls": 18,
+        "delegations_triggered": 1,
+        "is_mathematically_balanced": false
+      },
+      "ablation_without_validation": {
+        "overall_accuracy": 0.85,
+        "response_time_seconds": 0.001,
+        "llm_calls": 5,
+        "tool_calls": 11,
+        "is_mathematically_balanced": false
+      }
+    },
+    {
+      "case_id": "case_03",
+      "case_name": "High DTI Debt Trap",
+      "single_agent": {
+        "overall_accuracy": 0.8125,
+        "response_time_seconds": 0.0005,
+        "llm_calls": 1,
+        "tool_calls": 0
+      },
+      "multi_agent": {
+        "overall_accuracy": 0.9625,
+        "response_time_seconds": 0.0025,
+        "llm_calls": 5,
+        "tool_calls": 13,
+        "delegations_triggered": 0,
+        "is_mathematically_balanced": true
+      },
+      "ablation_without_validation": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0015,
+        "llm_calls": 5,
+        "tool_calls": 13,
+        "is_mathematically_balanced": true
+      }
+    },
+    {
+      "case_id": "case_04",
+      "case_name": "Unfeasible Goal Horizon",
+      "single_agent": {
+        "overall_accuracy": 0.85,
+        "response_time_seconds": 0.0005,
+        "llm_calls": 1,
+        "tool_calls": 0
+      },
+      "multi_agent": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0036,
+        "llm_calls": 7,
+        "tool_calls": 17,
+        "delegations_triggered": 1,
+        "is_mathematically_balanced": true
+      },
+      "ablation_without_validation": {
+        "overall_accuracy": 0.85,
+        "response_time_seconds": 0.0019,
+        "llm_calls": 5,
+        "tool_calls": 11,
+        "is_mathematically_balanced": true
+      }
+    },
+    {
+      "case_id": "case_05",
+      "case_name": "Multiple Prioritized Goals",
+      "single_agent": {
+        "overall_accuracy": 0.8875,
+        "response_time_seconds": 0.0002,
+        "llm_calls": 1,
+        "tool_calls": 0
+      },
+      "multi_agent": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.002,
+        "llm_calls": 5,
+        "tool_calls": 11,
+        "delegations_triggered": 0,
+        "is_mathematically_balanced": true
+      },
+      "ablation_without_validation": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0017,
+        "llm_calls": 5,
+        "tool_calls": 11,
+        "is_mathematically_balanced": true
+      }
+    },
+    {
+      "case_id": "case_06",
+      "case_name": "Low Emergency Cushion",
+      "single_agent": {
+        "overall_accuracy": 0.8875,
+        "response_time_seconds": 0.0002,
+        "llm_calls": 1,
+        "tool_calls": 0
+      },
+      "multi_agent": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0021,
+        "llm_calls": 5,
+        "tool_calls": 11,
+        "delegations_triggered": 0,
+        "is_mathematically_balanced": true
+      },
+      "ablation_without_validation": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0016,
+        "llm_calls": 5,
+        "tool_calls": 11,
+        "is_mathematically_balanced": true
+      }
+    },
+    {
+      "case_id": "case_07",
+      "case_name": "Moderate Balanced Profile",
+      "single_agent": {
+        "overall_accuracy": 0.85,
+        "response_time_seconds": 0.0002,
+        "llm_calls": 1,
+        "tool_calls": 0
+      },
+      "multi_agent": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0036,
+        "llm_calls": 5,
+        "tool_calls": 12,
+        "delegations_triggered": 0,
+        "is_mathematically_balanced": true
+      },
+      "ablation_without_validation": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0034,
+        "llm_calls": 5,
+        "tool_calls": 12,
+        "is_mathematically_balanced": true
+      }
+    },
+    {
+      "case_id": "case_08",
+      "case_name": "Conflict & Delegation Trigger Case",
+      "single_agent": {
+        "overall_accuracy": 0.8125,
+        "response_time_seconds": 0.0002,
+        "llm_calls": 1,
+        "tool_calls": 0
+      },
+      "multi_agent": {
+        "overall_accuracy": 1.0,
+        "response_time_seconds": 0.0031,
+        "llm_calls": 7,
+        "tool_calls": 18,
+        "delegations_triggered": 1,
+        "is_mathematically_balanced": true
+      },
+      "ablation_without_validation": {
+        "overall_accuracy": 0.85,
+        "response_time_seconds": 0.002,
+        "llm_calls": 5,
+        "tool_calls": 12,
+        "is_mathematically_balanced": true
+      }
+    }
+  ]
+}
